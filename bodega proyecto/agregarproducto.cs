@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using static bodega_proyecto.Producto;
+
 
 namespace bodega_proyecto
 {

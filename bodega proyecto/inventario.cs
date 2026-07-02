@@ -13,6 +13,9 @@ namespace bodega_proyecto
         public void AgregarProducto(Producto producto)
         {
             productos.Add(producto);
+
+            ArchivoProductos.Guardar(productos);
+
             Console.WriteLine("Producto agregado correctamente");
         }
 
@@ -45,7 +48,14 @@ namespace bodega_proyecto
             {
                 if (producto.Id == idProducto)
                 {
-                    return producto.VenderProducto(cantidad);
+                    bool vendido = producto.VenderProducto(cantidad);
+
+                    if (vendido)
+                    {
+                        ArchivoProductos.Guardar(productos);
+                    }
+
+                    return vendido;
                 }
             }
 
@@ -82,6 +92,7 @@ namespace bodega_proyecto
                 if (producto.Id == id)
                 {
                     productos.Remove(producto);
+                    ArchivoProductos.Guardar(productos);
                     Console.WriteLine("Producto eliminado correctamente.");
                     return;
                 }
@@ -98,6 +109,7 @@ namespace bodega_proyecto
                 if (producto.Id == id)
                 {
                     producto.IngresarStock(cantidad);
+                    ArchivoProductos.Guardar(productos);
                     Console.WriteLine("Stock actualizado correctamente.");
                     return;
                 }
@@ -126,6 +138,11 @@ namespace bodega_proyecto
         {
             return productos;
         }
+        public void CargarProductos(List<Producto> lista)
+        {
+            productos = lista;
+        }
     }
+
 }
 

@@ -5,7 +5,7 @@ using System.Text;
 namespace bodega_proyecto
 {
     
-    {
+    
         public class Producto
         {
             public int Id { get; set; }
