@@ -142,6 +142,18 @@ namespace bodega_proyecto
         {
             productos = lista;
         }
+        public bool ExisteProducto(int id)
+        {
+            foreach (Producto producto in productos)
+            {
+                if (producto.Id == id)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 
 }
